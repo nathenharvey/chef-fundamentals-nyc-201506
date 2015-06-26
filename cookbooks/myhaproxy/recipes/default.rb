@@ -3,9 +3,16 @@
 # Recipe:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
-all_web_nodes = search("node","role:web AND chef_environment:#{node.chef_environment}")
-
+all_web_nodes = []
 members = []
+
+if Chef::Config[:solo]
+  Chef::Log.warn("This recipe uses search. Chef Solo does not support search.")
+else
+  all_web_nodes = search("node","role:web AND chef_environment:#{node.chef_environment}")
+end
+
+
 
 all_web_nodes.each do |web_node|
   member = {

@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
-all_web_nodes = search("node","role:web")
+all_web_nodes = search("node","role:web AND chef_environment:#{node.chef_environment}")
 
 members = []
 

@@ -18,5 +18,7 @@ node.default['haproxy']['members'] = [
   }
 ]
 
+node.default['haproxy']['admin']['address_bind'] = "0.0.0.0"
+
 
 include_recipe "haproxy::default"
